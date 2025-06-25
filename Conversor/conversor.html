@@ -73,27 +73,30 @@
     <div id="resultado">Resultado: -</div>
   </div>
 
-  <script>
-    async function convertir() {
-      const cantidad = parseFloat(document.getElementById('cantidad').value);
-      const de = document.getElementById('de').value;
-      const a = document.getElementById('a').value;
+ <script>
+  async function convertir() {
+    const cantidad = parseFloat(document.getElementById('cantidad').value);
+    const de = document.getElementById('de').value;
+    const a = document.getElementById('a').value;
 
-      if (isNaN(cantidad)) {
-        alert('Ingrese una cantidad válida');
-        return;
-      }
-
-      try {
-        const res = await fetch(`https://api.exchangerate-api.com/v4/latest/${de}`);
-        const data = await res.json();
-        const tasa = data.rates[a];
-        const resultado = cantidad * tasa;
-        document.getElementById('resultado').innerText = `Resultado: ${resultado.toFixed(2)} ${a}`;
-      } catch (error) {
-        document.getElementById('resultado').innerText = "Error al obtener tasas.";
-      }
+    if (isNaN(cantidad)) {
+      alert('Ingrese una cantidad válida');
+      return;
     }
-  </script>
+
+    try {
+      const res = await fetch(`https://api.exchangerate.host/latest?base=${de}&symbols=${a}`);
+      const data = await res.json();
+      const tasa = data.rates[a];
+      const resultado = cantidad * tasa;
+      document.getElementById('resultado').innerText = `Resultado: ${resultado.toFixed(2)} ${a}`;
+    } catch (error) {
+      document.getElementById('resultado').innerText = "Error al obtener tasas.";
+    }
+  }
+</script>
+
+
+
 </body>
 </html>
