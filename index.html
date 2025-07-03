@@ -12,7 +12,6 @@
   <div id="particles-js"></div>
 
   <div class="container">
-
     <!-- Navbar -->
     <nav class="navbar">
       <ul>
@@ -70,6 +69,12 @@
       <h2>Proyectos</h2>
 
       <div class="project-card">
+        <h3>Cronómetro+ con Pomodoro</h3>
+        <p>Cronómetro, temporizador y Pomodoro en un solo proyecto. Incluye alarma, contador visual y ciclos automáticos.</p>
+        <a href="CronometroPlus/index.html" target="_blank" class="btn">Probar Cronómetro+</a>
+      </div>
+
+      <div class="project-card">
         <h3>Cronómetro Web</h3>
         <p>Inicia, pausa y reinicia un cronómetro hecho con JavaScript.</p>
         <a href="Cronometro/index.html" target="_blank" class="btn">Probar Cronómetro</a>
@@ -98,11 +103,23 @@
         <p>Consulta el clima actual de cualquier ciudad usando una API.</p>
         <a href="Clima/index.html" target="_blank" class="btn">Probar App del Clima</a>
       </div>
+      
+      <div class="project-card">
+        <h3>Lista de Tareas</h3>
+        <p>Agrega, elimina y marca tareas usando almacenamiento local.</p>
+        <a href="ToDo/index.html" target="_blank" class="btn">Probar To-Do List</a>
+      </div>
 
       <div class="project-card">
         <h3>Juego del Molino</h3>
         <p>Versión simplificada del clásico juego de estrategia. Coloca tus fichas, forma molinos y elimina al oponente.</p>
         <a href="Molino/index.html" target="_blank" class="btn">Probar Juego del Molino</a>
+      </div>
+
+      <div class="project-card">
+        <h3>Simulador de Dado &amp; Ruleta</h3>
+        <p>Elige entre lanzar un dado de 6 caras o girar una ruleta con X sectores.</p>
+        <a href="Simulador/index.html" target="_blank" class="btn">Probar Simulador</a>
       </div>
     </section>
 
@@ -113,6 +130,17 @@
       <p>GitHub: <a href="https://github.com/JoaquinSilva25/mi-portafolio" target="_blank">github.com/JoaquinSilva25</a></p>
     </section>
 
+    <!-- CV -->
+    <section id="cv">
+      <h2>Currículum Vitae</h2>
+      <div style="text-align: center;">
+        <a href="CV_Joaquin_Silva.pdf" target="_blank" class="btn">Ver CV (nueva pestaña)</a>
+        <button class="btn" onclick="mostrarCV()">Ver CV embebido</button>
+      </div>
+      <div id="visor-cv" style="margin-top: 20px; display: none;">
+        <iframe src="CV_Joaquin_Silva.pdf" width="100%" height="600px" style="border: 2px solid #00ff99; border-radius: 12px;"></iframe>
+      </div>
+    </section>
   </div>
 
   <!-- Particles.js -->
@@ -121,19 +149,12 @@
     particlesJS.load('particles-js', 'particles-config.json', function() {
       console.log('particles.js cargado correctamente');
     });
+
+    function mostrarCV() {
+      const visor = document.getElementById('visor-cv');
+      visor.style.display = (visor.style.display === 'none') ? 'block' : 'none';
+    }
   </script>
-
-<section id="cv">
-  <h2>Currículum Vitae</h2>
-  <div style="text-align: center;">
-    <a href="CV_Joaquin_Silva.pdf" target="_blank" class="btn">Ver CV (nueva pestaña)</a>
-    <button class="btn" onclick="mostrarCV()">Ver CV embebido</button>
-  </div>
-
-  <div id="visor-cv" style="margin-top: 20px; display: none;">
-    <iframe src="CV_Joaquin_Silva.pdf" width="100%" height="600px" style="border: 2px solid #00ff99; border-radius: 12px;"></iframe>
-  </div>
-</section>
 
   <!-- Footer -->
   <footer class="footer">
@@ -141,23 +162,15 @@
     <div class="social-icons">
       <a href="https://github.com/JoaquinSilva25" target="_blank" aria-label="GitHub">
         <svg height="24" width="24" viewBox="0 0 16 16" fill="#00ff99" xmlns="http://www.w3.org/2000/svg">
-          <path d="M8 .198a8 8 0 0 0-2.53 15.59c.4.075.55-.175.55-.388 ..."/>
+          <path d="M8 .198a8 8 0 0 0-2.53 15.59c.4.075.55-.175..."/>
         </svg>
       </a>
-
       <a href="mailto:joaquinsilvasistemas@gmail.com" aria-label="Email">
         <svg height="24" width="24" fill="#00ff99" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-          <path d="M502.3 190.8L327.4 365.7c-9.7 9.7-25.4 9.7 ..."/>
+          <path d="M502.3 190.8L327.4 365.7c-9.7 9.7-25.4 9.7..."/>
         </svg>
       </a>
     </div>
   </footer>
-<script>
-  function mostrarCV() {
-    const visor = document.getElementById('visor-cv');
-    visor.style.display = (visor.style.display === 'none') ? 'block' : 'none';
-  }
-</script>
-
 </body>
 </html>
