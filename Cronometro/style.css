@@ -17,11 +17,63 @@ body {
   box-shadow: 0 0 15px #00ff99;
 }
 
-#display {
-  font-size: 48px;
-  margin-bottom: 20px;
+/* ⏱️ Reloj visual redondo */
+.reloj-container {
+  width: 300px;
+  height: 300px;
+  margin: 20px auto;
+  background-color: #0d1117;
+  border-radius: 50%;
+  border: 10px solid #00ff99;
+  box-shadow: 0 0 30px #00ff99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+.reloj-display {
+  font-size: 40px;
+  color: #00ff99;
+  font-weight: bold;
+}
+
+/* 🎨 Estados del cronómetro */
+.estado-inicial {
+  border-color: #00ff99;
+}
+
+.estado-activo {
+  border-color: #00ff99;
+}
+
+.estado-pausado {
+  border-color: #facc15; /* amarillo */
+}
+
+.estado-finalizado {
+  border-color: #ef4444; /* rojo */
+  animation: parpadeo 0.8s infinite;
+}
+
+@keyframes parpadeo {
+  0%, 100% {
+    box-shadow: 0 0 30px #ef4444;
+  }
+  50% {
+    box-shadow: 0 0 10px #0d1117;
+  }
+}
+
+/* 📋 Historial */
+#ultimo-tiempo {
+  text-align: center;
+  color: #94a3b8;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* 🎛️ Botones */
 button {
   background-color: #00ff99;
   color: #0d1117;
@@ -37,6 +89,8 @@ button {
 button:hover {
   background-color: #00dd88;
 }
+
+/* ⌨️ Entrada del temporizador */
 input[type="number"] {
   padding: 10px;
   font-size: 16px;
