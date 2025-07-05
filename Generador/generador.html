@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Generador de Contraseñas</title>
   <style>
     body {
@@ -26,6 +26,7 @@
       font-size: 1.2em;
       margin: 20px 0;
       word-wrap: break-word;
+      color: #00ff99;
     }
 
     button {
@@ -36,10 +37,19 @@
       border-radius: 10px;
       cursor: pointer;
       font-weight: bold;
+      margin: 5px;
     }
 
     button:hover {
       background-color: #00dd88;
+    }
+
+    #copiarBtn {
+      background-color: #ffaa00;
+    }
+
+    #copiarBtn:hover {
+      background-color: #e69500;
     }
   </style>
 </head>
@@ -49,6 +59,7 @@
     <p>Haz clic para generar una contraseña segura:</p>
     <div id="password">********</div>
     <button onclick="generarContrasena()">Generar</button>
+    <button id="copiarBtn" onclick="copiarContrasena()">Copiar</button>
   </div>
 
   <script>
@@ -60,6 +71,16 @@
         contrasena += caracteres[index];
       }
       document.getElementById("password").innerText = contrasena;
+    }
+
+    function copiarContrasena() {
+      const texto = document.getElementById("password").innerText;
+      navigator.clipboard.writeText(texto).then(() => {
+        const btn = document.getElementById("copiarBtn");
+        const original = btn.innerText;
+        btn.innerText = "¡Copiado!";
+        setTimeout(() => btn.innerText = original, 1500);
+      });
     }
   </script>
 </body>
