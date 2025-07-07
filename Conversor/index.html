@@ -73,30 +73,40 @@
     <div id="resultado">Resultado: -</div>
   </div>
 
- <script>
-  async function convertir() {
-    const cantidad = parseFloat(document.getElementById('cantidad').value);
-    const de = document.getElementById('de').value;
-    const a = document.getElementById('a').value;
+  <script>
+    async function convertir() {
+      const cantidad = parseFloat(document.getElementById('cantidad').value);
+      const de = document.getElementById('de').value;
+      const a = document.getElementById('a').value;
 
-    if (isNaN(cantidad)) {
-      alert('Ingrese una cantidad válida');
-      return;
+      if (isNaN(cantidad)) {
+        alert('Ingrese una cantidad válida');
+        return;
+      }
+
+      if (de === a) {
+        document.getElementById('resultado').innerText = `Resultado: ${cantidad.toFixed(2)} ${a}`;
+        return;
+      }
+
+      try {
+        const url = `https://api.exchangerate.host/convert?from=${de}&to=${a}&amount=${cantidad}`;
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data.result != null && !isNaN(data.result)) {
+          const resultado = data.result;
+          document.getElementById('resultado').innerText = `Resultado: ${resultado.toFixed(2)} ${a}`;
+        } else {
+          console.error("Respuesta inválida:", data);
+          document.getElementById('resultado').innerText = "No se encontró la tasa para esa moneda.";
+        }
+      } catch (error) {
+        console.error("Error al obtener tasas:", error);
+        document.getElementById('resultado').innerText = "Error al obtener tasas de cambio.";
+      }
     }
-
-    try {
-      const res = await fetch(`https://api.exchangerate.host/latest?base=${de}&symbols=${a}`);
-      const data = await res.json();
-      const tasa = data.rates[a];
-      const resultado = cantidad * tasa;
-      document.getElementById('resultado').innerText = `Resultado: ${resultado.toFixed(2)} ${a}`;
-    } catch (error) {
-      document.getElementById('resultado').innerText = "Error al obtener tasas.";
-    }
-  }
-</script>
-
-
-
+  </script>
 </body>
 </html>
+
