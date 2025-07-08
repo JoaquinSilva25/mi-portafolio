@@ -6,6 +6,7 @@
   <title>Joaquin Silva - Portafolio</title>
   <link rel="stylesheet" href="style.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body>
   <!-- Fondo animado -->
@@ -13,7 +14,7 @@
 
   <div class="container">
     <!-- Navbar -->
-    <nav class="navbar">
+    <nav class="navbar" data-aos="fade-down">
       <ul>
         <li><a href="#sobre-mi">Sobre mí</a></li>
         <li><a href="#habilidades">Habilidades</a></li>
@@ -23,14 +24,14 @@
     </nav>
 
     <!-- Header -->
-    <header>
+    <header data-aos="fade-up">
       <h1>¡Hola! Soy Joaquin Silva</h1>
       <p>Programador en formación, bienvenido a mi espacio web.</p>
       <img src="Imagenes/perfil.jpg" alt="Foto de Joaquin Silva" class="perfil">
     </header>
 
     <!-- Sobre mí -->
-    <section id="sobre-mi">
+    <section id="sobre-mi" data-aos="fade-right">
       <h2>Sobre mí</h2>
       <p>
         Estudiante de Ingeniería de Sistemas con sólidos conocimientos en desarrollo de software, análisis de datos y gestión de proyectos tecnológicos. 
@@ -40,7 +41,7 @@
     </section>
 
     <!-- Habilidades -->
-    <section id="habilidades">
+    <section id="habilidades" data-aos="fade-left">
       <h2>Habilidades</h2>
 
       <h3>🧠 Habilidades Blandas</h3>
@@ -65,43 +66,40 @@
     </section>
 
     <!-- Proyectos -->
-    <section id="proyectos">
+    <section id="proyectos" data-aos="zoom-in">
       <h2>Proyectos</h2>
 
-      
-
-      <div class="project-card">
+      <div class="project-card" data-aos="fade-up">
         <h3>Cronómetro Web</h3>
         <p>Inicia, pausa y reinicia un cronómetro hecho con JavaScript.</p>
         <a href="Cronometro/index.html" target="_blank" class="btn">Probar Cronómetro</a>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-aos="fade-up">
         <h3>Calculadora Web</h3>
         <p>Una calculadora hecha con HTML, CSS y JS.</p>
         <a href="Calculadora/calculadora.html" target="_blank" class="btn">Probar Calculadora</a>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-aos="fade-up">
         <h3>Generador de Contraseñas</h3>
         <p>Aplicación para generar contraseñas seguras con un clic.</p>
-       <a href="Generador/generador.html" target="_blank" class="btn">Probar Generador</a>
+        <a href="Generador/generador.html" target="_blank" class="btn">Probar Generador</a>
       </div>
 
-      
-      <div class="project-card">
+      <div class="project-card" data-aos="fade-up">
         <h3>Lista de Tareas</h3>
         <p>Agrega, elimina y marca tareas usando almacenamiento local.</p>
         <a href="ToDo/index.html" target="_blank" class="btn">Probar To-Do List</a>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-aos="fade-up">
         <h3>Juego del Molino</h3>
         <p>Versión simplificada del clásico juego de estrategia. Coloca tus fichas, forma molinos y elimina al oponente.</p>
         <a href="Molino/index.html" target="_blank" class="btn">Probar Juego del Molino</a>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-aos="fade-up">
         <h3>Simulador de Dado &amp; Ruleta</h3>
         <p>Elige entre lanzar un dado de 6 caras o girar una ruleta con X sectores.</p>
         <a href="Simulador/index.html" target="_blank" class="btn">Probar Simulador</a>
@@ -109,14 +107,14 @@
     </section>
 
     <!-- Contacto -->
-    <section id="contacto">
+    <section id="contacto" data-aos="fade-right">
       <h2>Contacto</h2>
       <p>Email: <a href="mailto:joaquinsilvasistemas@gmail.com">joaquinsilvasistemas@gmail.com</a></p>
       <p>GitHub: <a href="https://github.com/JoaquinSilva25/mi-portafolio" target="_blank">github.com/JoaquinSilva25</a></p>
     </section>
 
     <!-- CV -->
-    <section id="cv">
+    <section id="cv" data-aos="flip-up">
       <h2>Currículum Vitae</h2>
       <div style="text-align: center;">
         <a href="CV_Joaquin_Silva.pdf" target="_blank" class="btn">Ver CV (nueva pestaña)</a>
@@ -141,8 +139,17 @@
     }
   </script>
 
+  <!-- AOS Animation -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
+
   <!-- Footer -->
-  <footer class="footer">
+  <footer class="footer" data-aos="fade-up">
     <p>© 2025 Joaquin Silva</p>
     <div class="social-icons">
       <a href="https://github.com/JoaquinSilva25" target="_blank" aria-label="GitHub">
