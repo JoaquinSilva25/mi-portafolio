@@ -317,3 +317,12 @@ html {
   }
 
 }
+#cv h2 {
+  text-align: center;
+  color: #00ffff;
+}
+
+#cv .btn {
+  margin: 10px;
+}
+

@@ -6,16 +6,21 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  margin: 0;
 }
 
+/* Contenedor principal */
 .calculadora {
   background-color: #161b22;
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 0 20px #00ff99;
-  width: 280px;
+  width: fit-content;
+  min-width: 280px;
+  max-width: 100%;
 }
 
+/* Pantalla */
 #pantalla {
   width: 100%;
   padding: 10px;
@@ -28,12 +33,15 @@ body {
   border-radius: 5px;
 }
 
+/* Botonera */
 .teclado {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
+  margin-bottom: 10px;
 }
 
+/* Botones básicos */
 button {
   padding: 15px;
   font-size: 18px;
@@ -49,8 +57,31 @@ button:hover {
   background-color: #2ea043;
 }
 
+/* Botones especiales */
 .borrar {
   grid-column: span 4;
   background-color: #ff5555;
   color: white;
+}
+
+.retroceso {
+  grid-column: span 2;
+  background-color: #ffaa00;
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 400px) {
+  .calculadora {
+    width: 90%;
+  }
+
+  button {
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  #pantalla {
+    font-size: 20px;
+  }
 }

@@ -1,0 +1,47 @@
+body {
+  font-family: sans-serif;
+  background: #0d1117;
+  color: #c9d1d9;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+}
+
+#tablero {
+  width: 400px;
+  height: 400px;
+  margin: 30px auto;
+  position: relative;
+  background-color: #1e293b;
+  border: 4px solid #00ff99;
+  border-radius: 8px;
+}
+
+.punto {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #00ff99;
+  border-radius: 50%;
+  background-color: #0d1117;
+  position: absolute;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.punto:hover {
+  transform: scale(1.2);
+}
+
+.ficha-negra {
+  background-color: black;
+}
+
+.ficha-blanca {
+  background-color: white;
+  border-color: white;
+}
+
+.eliminable {
+  outline: 3px solid red;
+  cursor: pointer !important;
+}

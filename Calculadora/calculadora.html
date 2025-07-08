@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Calculadora</title>
   <link rel="stylesheet" href="calculadora.css">
 </head>
 <body>
   <div class="calculadora">
     <input type="text" id="pantalla" disabled>
+    
     <div class="teclado">
       <button onclick="agregar('7')">7</button>
       <button onclick="agregar('8')">8</button>
@@ -30,6 +31,7 @@
       <button onclick="calcular()">=</button>
       <button onclick="agregar('+')">+</button>
 
+      <button onclick="borrarCaracter()" class="retroceso">←</button>
       <button onclick="borrarTodo()" class="borrar">C</button>
     </div>
   </div>
