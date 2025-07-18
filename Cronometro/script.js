@@ -11,13 +11,15 @@ let running = false;
 let timeLeft = 1500; // 25 min en segundos
 let elapsed = 0;
 
+// Actualiza el reloj en pantalla
 function updateDisplay() {
-  let time = mode === 'pomodoro' ? timeLeft : elapsed;
-  let minutes = String(Math.floor(time / 60)).padStart(2, '0');
-  let seconds = String(time % 60).padStart(2, '0');
+  const currentTime = mode === 'pomodoro' ? timeLeft : elapsed;
+  const minutes = String(Math.floor(currentTime / 60)).padStart(2, '0');
+  const seconds = String(currentTime % 60).padStart(2, '0');
   timerDisplay.textContent = `${minutes}:${seconds}`;
 }
 
+// Inicia el temporizador
 function startTimer() {
   if (running) return;
   running = true;
@@ -28,8 +30,9 @@ function startTimer() {
         timeLeft--;
       } else {
         clearInterval(interval);
-        alert("¡Tiempo terminado!");
         running = false;
+        alert("¡Pomodoro terminado!");
+        // new Audio("ding.mp3").play(); // Puedes agregar un sonido si lo deseas
       }
     } else {
       elapsed++;
@@ -38,14 +41,17 @@ function startTimer() {
   }, 1000);
 }
 
+// Pausa el temporizador
 function pauseTimer() {
   clearInterval(interval);
   running = false;
 }
 
+// Reinicia el modo actual
 function resetTimer() {
   clearInterval(interval);
   running = false;
+
   if (mode === 'pomodoro') {
     timeLeft = 1500;
   } else {
@@ -54,9 +60,11 @@ function resetTimer() {
   updateDisplay();
 }
 
+// Cambia entre Pomodoro y Cronómetro
 function switchMode() {
   clearInterval(interval);
   running = false;
+
   if (mode === 'pomodoro') {
     mode = 'cronometro';
     title.textContent = "Modo Cronómetro";
@@ -68,12 +76,15 @@ function switchMode() {
     switchModeBtn.textContent = "Cambiar a Cronómetro";
     timeLeft = 1500;
   }
+
   updateDisplay();
 }
 
+// Eventos de los botones
 startBtn.onclick = startTimer;
 pauseBtn.onclick = pauseTimer;
 resetBtn.onclick = resetTimer;
 switchModeBtn.onclick = switchMode;
 
+// Muestra la hora inicial al cargar
 updateDisplay();
