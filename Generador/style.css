@@ -1,0 +1,77 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #0e0e0e;
+  color: #f1f1f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  background: #1a1a1a;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 0 10px #0ff;
+  max-width: 400px;
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #0ff;
+}
+
+.password-box {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.password-box input {
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background: #2a2a2a;
+  color: #0ff;
+}
+
+.password-box button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: #0ff;
+  color: #000;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.controls label {
+  display: block;
+  margin: 0.5rem 0;
+}
+
+.controls input[type="checkbox"],
+.controls input[type="range"] {
+  margin-left: 0.5rem;
+}
+
+.controls button {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  border: none;
+  background: #00ffaa;
+  color: #000;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.controls button:hover {
+  background: #00cc88;
+}

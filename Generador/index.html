@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Generador de Contraseñas</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🔐 Generador de Contraseñas</h1>
+    <div class="password-box">
+      <input type="text" id="password" readonly placeholder="Tu contraseña aparecerá aquí" />
+      <button onclick="copyPassword()">📋 Copiar</button>
+    </div>
+
+    <div class="controls">
+      <label>
+        Longitud: <span id="length-value">12</span>
+        <input type="range" id="length" min="4" max="32" value="12" oninput="updateLength(this.value)" />
+      </label>
+
+      <label><input type="checkbox" id="uppercase" checked /> Incluir mayúsculas</label>
+      <label><input type="checkbox" id="lowercase" checked /> Incluir minúsculas</label>
+      <label><input type="checkbox" id="numbers" checked /> Incluir números</label>
+      <label><input type="checkbox" id="symbols" /> Incluir símbolos</label>
+
+      <button onclick="generatePassword()"> Generar Contraseña</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
