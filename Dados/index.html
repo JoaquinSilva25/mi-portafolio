@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simulador de Dado y Ruleta</title>
+  <style>
+    body {
+      background: #1e1e2f;
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1, h2 {
+      margin-top: 30px;
+    }
+
+    textarea {
+      width: 300px;
+      height: 100px;
+      border-radius: 10px;
+      padding: 10px;
+      font-size: 1rem;
+      border: none;
+      resize: none;
+    }
+
+    button {
+      margin: 15px 5px;
+      padding: 10px 20px;
+      background: #ff4c60;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #ff2e47;
+    }
+
+    #canvasContainer {
+      position: relative;
+      margin: 30px auto;
+      width: 400px;
+      height: 400px;
+    }
+
+    canvas {
+      width: 100%;
+      height: 100%;
+    }
+
+    .flecha {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-bottom: 25px solid #ff4c60;
+    }
+
+    .dado-container {
+      margin-top: 40px;
+    }
+
+    .dado {
+      font-size: 100px;
+      transition: transform 0.4s;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Simulador de Ruleta</h1>
+
+  <p>Ingresa nombres separados por coma o salto de línea:</p>
+  <textarea id="nombres">Ana, Luis, Carla, Pedro, Jorge, Sofía</textarea><br>
+  <button onclick="generarRuleta()">Generar Ruleta</button>
+  <button onclick="girarRuleta()">Girar</button>
+
+  <div id="canvasContainer">
+    <div class="flecha"></div>
+    <canvas id="ruleta" width="400" height="400"></canvas>
+  </div>
+
+  <h2>Simulador de Dado</h2>
+  <div class="dado-container">
+    <div id="dado" class="dado">🎲</div>
+    <button onclick="lanzarDado()">Lanzar dado</button>
+  </div>
+
+  <script>
+    // ---------- Ruleta ----------
+    const canvas = document.getElementById('ruleta');
+    const ctx = canvas.getContext('2d');
+    let nombres = [];
+    let anguloActual = 0;
+    let girando = false;
+    let anguloPorSector = 0;
+
+    function generarRuleta() {
+      const entrada = document.getElementById('nombres').value;
+      nombres = entrada.split(/[\n,]+/).map(n => n.trim()).filter(n => n !== '');
+      if (nombres.length < 2) {
+        alert("Ingrese al menos 2 nombres.");
+        return;
+      }
+      anguloActual = 0;
+      dibujarRuleta();
+    }
+
+    function dibujarRuleta() {
+      const radio = canvas.width / 2;
+      anguloPorSector = 2 * Math.PI / nombres.length;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = 0; i < nombres.length; i++) {
+        const startAngle = anguloActual + i * anguloPorSector;
+        const endAngle = startAngle + anguloPorSector;
+
+        ctx.beginPath();
+        ctx.moveTo(radio, radio);
+        ctx.arc(radio, radio, radio, startAngle, endAngle);
+        ctx.fillStyle = `hsl(${i * 360 / nombres.length}, 80%, 60%)`;
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.save();
+        ctx.translate(radio, radio);
+        ctx.rotate(startAngle + anguloPorSector / 2);
+        ctx.textAlign = "right";
+        ctx.fillStyle = "black";
+        ctx.font = "16px sans-serif";
+        ctx.fillText(nombres[i], radio - 10, 5);
+        ctx.restore();
+      }
+    }
+
+    function girarRuleta() {
+      if (girando || nombres.length < 2) return;
+      girando = true;
+
+      const vueltas = Math.floor(Math.random() * 3 + 5);
+      const giroExtra = Math.random() * 2 * Math.PI;
+      const anguloFinal = vueltas * 2 * Math.PI + giroExtra;
+      const duracion = 4000;
+      const inicio = performance.now();
+
+      function animar(tiempo) {
+        const progreso = Math.min((tiempo - inicio) / duracion, 1);
+        const easeOut = 1 - Math.pow(1 - progreso, 3);
+        anguloActual = easeOut * anguloFinal;
+        dibujarRuleta();
+
+        if (progreso < 1) {
+          requestAnimationFrame(animar);
+        } else {
+          girando = false;
+        }
+      }
+
+      requestAnimationFrame(animar);
+    }
+
+    generarRuleta();
+
+    // ---------- Dado ----------
+    const dado = document.getElementById('dado');
+    const caras = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣'];
+
+    function lanzarDado() {
+      dado.style.transform = 'scale(1.2) rotate(360deg)';
+      setTimeout(() => {
+        const resultado = Math.floor(Math.random() * 6);
+        dado.textContent = caras[resultado];
+        dado.style.transform = 'scale(1) rotate(0deg)';
+      }, 500);
+    }
+  </script>
+
+</body>
+</html>
