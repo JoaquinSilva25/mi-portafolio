@@ -213,11 +213,36 @@ Busco oportunidades donde pueda seguir creciendo como desarrollador, aportar val
     </section>
 
     <!-- Contacto -->
-    <section id="contacto" data-aos="fade-right">
-      <h2>Contacto</h2>
-      <p>Email: <a href="mailto:joaquinsilvasistemas@gmail.com">joaquinsilvasistemas@gmail.com</a></p>
-      <p>GitHub: <a href="https://github.com/JoaquinSilva25/mi-portafolio" target="_blank">github.com/JoaquinSilva25</a></p>
-    </section>
+   <section id="contacto" class="contacto">
+  <div class="container">
+    <h2 class="section-title">Contáctame</h2>
+    <p class="section-subtitle">¿Tienes alguna idea, proyecto o propuesta? Estoy listo para escucharte.</p>
+
+    <div class="contact-content">
+      <!-- Información de contacto -->
+      <div class="contact-info">
+        <p><strong><img src="Imagenes/gmail.png" alt="email" style="width:20px; vertical-align:middle;"> Email:</strong> joaquinsilvasistemas@gmail.com</p>
+        <p><strong><img src="Imagenes/Ubicacion.png" alt="ubicación" style="width:20px; vertical-align:middle;"> Ubicación:</strong> Lima, Perú</p>
+        <p><strong><img src="Imagenes/github.png" alt="github" style="width:20px; vertical-align:middle;"> GitHub:</strong> <a href="https://github.com/joaquinsilva25" target="_blank">joaquinsilva25</a></p>
+      </div>
+
+      <!-- Formulario de contacto -->
+      <form action="https://formspree.io/f/myzpevyd" method="POST" class="contact-form">
+        <div class="form-group">
+          <input type="text" name="name" placeholder="Tu nombre" required>
+        </div>
+        <div class="form-group">
+          <input type="email" name="email" placeholder="Tu correo" required>
+        </div>
+        <div class="form-group">
+          <textarea name="message" rows="5" placeholder="Escribe tu mensaje..." required></textarea>
+        </div>
+        <button type="submit" class="btn-enviar">Enviar mensaje</button>
+      </form>
+    </div>
+  </div>
+</section>
+
 
     <!-- CV -->
     <section id="cv" data-aos="flip-up">
